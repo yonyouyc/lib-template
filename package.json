@@ -1,0 +1,27 @@
+{
+  "name": "approve-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "dev": "browser-sync start --server --files 'lib/*.js, *.html'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.yonyou.com/yuncai-fed/approve-component.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "browser-sync": "^2.26.7",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-uglify": "^6.0.4"
+  }
+}
