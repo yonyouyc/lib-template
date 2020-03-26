@@ -6,7 +6,7 @@ export function getUserInfo() {
         if (!data.needrelogin) {
             // 重写cookie 和 localStorage
             setCookie('_yc_userid', data.user.ucuserid)
-            window.localStorage.setItem('user', data)
+            window.localStorage.setItem('user', JSON.stringify(data))
             result = data;
         } else {
             return null

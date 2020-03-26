@@ -57,6 +57,32 @@ export const getUserContext = () => {
         }
     }
 }
+export const getEnterPriseContext = () =>{
+    var userString = localStorage.getItem('user')
+    // 判断本地是否登录
+    if (userString) {
+        var userObj = JSON.parse(userString)
+        // 判断user里的用户和cookie里的用户是否一样
+        if (userObj.user && userObj.user.ucuserid == getCookie('_yc_userid')) {
+            return userObj.enterprise;
+        } else {
+            userObj = getUserInfo()
+            if (userObj) {
+                return userObj.enterprise
+            } else {
+                return null
+            }
+        }
+    } else {
+        var userObj = null
+        userObj = getUserInfo()
+        if (userObj) {
+            return userObj.enterprise
+        } else {
+            return null
+        }
+    }
+}
 
 export const isLand = () => {
     var isLand
@@ -81,13 +107,13 @@ export const getEnterpriseId = () => {
 export const getEnterpriseName = () => {
     var user = getUserContext()
     if (user) {
-        return user.getEnterpriseName
+        return user.enterpriseName
     } else {
         return null
     }
 }
 export const getTenantId = () =>{
-    var user = getUserContext()
+    var user = getEnterPriseContext()
     if (user) {
         return user.tenantid
     } else {
