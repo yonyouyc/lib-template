@@ -1,13 +1,11 @@
-import {getUserContext,getEnterPriseContext,setCookie,getCookie,isLand,getEnterpriseId,getEnterpriseName,getTenantId} from './userInfor'
-import { getUserInfo } from '../service/service'
+import {getUserContext,getEnterpriseContext,setCookie,getCookie,isLogin,getEnterpriseId,getEnterpriseName,getTenantId} from './userInfor'
 export default {
     getUserContext,
-    getEnterPriseContext,
+    getEnterpriseContext,
     setCookie,
     getCookie,
-    isLand,
+    isLogin,
     getEnterpriseId,
     getEnterpriseName,
     getTenantId,
-    getUserInfo
 }

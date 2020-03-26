@@ -8,7 +8,7 @@ module.exports = {
   output: {
     file: 'lib/index.min.js',
     format: 'umd', // 一般cjs就可以 表示commonjs 
-    name: 'yourtargetlibname' // umd需要，
+    name: 'userContext' // umd需要，
   },
   plugins: [
     babel({

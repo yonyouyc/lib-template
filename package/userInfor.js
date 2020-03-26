@@ -1,4 +1,4 @@
-import { getUserInfo } from '../service/service'
+import { getUserInfo } from './service/service'
 
 export const Ajax = (url, config, callback) => {
     const xhr = new XMLHttpRequest()
@@ -37,86 +37,53 @@ export const getUserContext = () => {
     if (userString) {
         var userObj = JSON.parse(userString)
         // 判断user里的用户和cookie里的用户是否一样
-        if (userObj.user && userObj.user.ucuserid == getCookie('_yc_userid')) {
+        var _yc_user = userObj.user.ucuserid + '_' + userObj.enterprise.tenantid
+        if (userObj.user && _yc_user == getCookie('_yc_user')) {
             return userObj.user;
         } else {
             userObj = getUserInfo()
-            if (userObj) {
-                return userObj.user
-            } else {
-                return null
-            }
+            return userObj?userObj.user:null
         }
     } else {
-        var userObj = null
-        userObj = getUserInfo()
-        if (userObj) {
-            return userObj.user
-        } else {
-            return null
-        }
+        var userObj = getUserInfo()
+        return userObj?userObj.user:null
+
     }
 }
-export const getEnterPriseContext = () =>{
+export const getEnterpriseContext = () =>{
     var userString = localStorage.getItem('user')
     // 判断本地是否登录
     if (userString) {
         var userObj = JSON.parse(userString)
         // 判断user里的用户和cookie里的用户是否一样
-        if (userObj.user && userObj.user.ucuserid == getCookie('_yc_userid')) {
+        var _yc_user = userObj.user.ucuserid + '_' + userObj.enterprise.tenantid
+        if (userObj.user && _yc_user == getCookie('_yc_user')) {
             return userObj.enterprise;
         } else {
             userObj = getUserInfo()
-            if (userObj) {
-                return userObj.enterprise
-            } else {
-                return null
-            }
+            return userObj?userObj.enterprise:null
         }
     } else {
-        var userObj = null
-        userObj = getUserInfo()
-        if (userObj) {
-            return userObj.enterprise
-        } else {
-            return null
-        }
+        var userObj = getUserInfo()
+        return userObj?userObj.enterprise:null
     }
 }
 
-export const isLand = () => {
-    var isLand
+export const isLogin = () => {
     var resData = getUserInfo()
-    if (resData) {
-        isLand = true
-    } else {
-        isLand = false
-    }
-    return isLand
+    return !!resData
 }
 
 export const getEnterpriseId = () => {
-    var user = getUserContext()
-    if (user) {
-        return user.enterpriseId
-    } else {
-        return null
-    }
+    var enterprise = getEnterpriseContext()
+    return enterprise?enterprise.id:''
 
 }
 export const getEnterpriseName = () => {
-    var user = getUserContext()
-    if (user) {
-        return user.enterpriseName
-    } else {
-        return null
-    }
+    var enterprise = getEnterpriseContext()
+    return enterprise?enterprise.name:''
 }
 export const getTenantId = () =>{
-    var user = getEnterPriseContext()
-    if (user) {
-        return user.tenantid
-    } else {
-        return null
-    }
+    var enterprise = getEnterpriseContext()
+    return enterprise?enterprise.tenantid:null
 }
