@@ -6,7 +6,7 @@ module.exports = {
   input: './package/index.js',
   external: ['jquery'], // 外部依赖
   output: {
-    file: 'lib/index.min.js',
+    file: 'lib/index.js',
     format: 'umd', // 一般cjs就可以 表示commonjs 
     name: 'userContext' // umd需要，
   },
