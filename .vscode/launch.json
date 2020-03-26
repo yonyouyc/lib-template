@@ -9,6 +9,7 @@
       "request": "launch",
       "name": "index",
       "skipFiles": ["<node_internals>/**"],
+      "port": 9929,
       "program": "${workspaceFolder}/debug/index.js",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node"
     }
